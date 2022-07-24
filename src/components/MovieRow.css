@@ -6,14 +6,14 @@
     margin: 0px 0px 0px 30px;
 }
 
+.movieRow--list {
+    transition: all ease .5s;
+}
+
 .movieRow--listarea {
     overflow-x: hidden;
 
     padding-left: 30px;
-}
-
-.movieRow--list {
-    width: 999999px;
 }
 
 .movieRow--item {
@@ -35,4 +35,75 @@
 
 .movieRow--item img:hover {
     transform: scale(1);
+}
+
+.movieRow--left,
+.movieRow--right {
+    width: 40px;
+    height: 272px;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    z-index: 99;
+    cursor: pointer;
+    transition: all ease .5s;
+}
+
+.movieRow--left {
+    left: 0;
+}
+
+.movieRow--right {
+    right: 0;
+}
+
+.movieRow:hover .movieRow--left,
+.movieRow:hover .movieRow--right {
+    opacity: 1;
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #000;
+
+    z-index: 99;
+}
+
+@media (max-width: 760px) {
+
+    .movieRow--left,
+    .movieRow--right {
+        display: none;
+    }
+
+    .movieRow--listarea {
+        overflow: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+    }
+
+    .movieRow--listarea::-webkit-scrollbar {
+        height: 0;
+    }
+
+    .movieRow--item img:hover {
+        transform: scale(.9);
+    }
 }
